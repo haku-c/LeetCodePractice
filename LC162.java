@@ -6,6 +6,7 @@ public class LC162 {
 
     public int binarySearch(int start, int end, int[] nums) {
         int index = start + (-start + end) / 2;
+        // check for endpoints are peaks or if something in the middle is a peak
         if ((index > 0 && index < nums.length - 1 && nums[index - 1] < nums[index] && nums[index] > nums[index + 1])
                 || (index == 0 && nums[index + 1] < nums[index]) || (index == nums.length - 1 && nums[index - 1] < nums[index])) {
             return index;
