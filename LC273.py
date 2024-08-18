@@ -60,7 +60,6 @@ class Solution:
             else:
                 return self.ones[s[0]] + " Hundred"
         elif l == 2:
-
             if s[0] == "1":
                 return self.teens[s]
             else:
