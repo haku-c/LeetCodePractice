@@ -4,6 +4,7 @@ class UnionSet:
         self.parent = [i for i in range(n + 1)]
         self.sizes = [1] * (n + 1)
 
+    # if we have not reached the root of this group, continue recursing.
     def find(self, i):
         if self.parent[i] != i:
             self.parent[i] = self.find(self.parent[i])
