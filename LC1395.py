@@ -29,7 +29,7 @@ def numTeams(self, rating: List[int]) -> int:
 # O(2n^2):
 # 2 parts of the algorithm: construct a table less and greater where less[i] is the number of elements 0 < j < i such that
 # rating[i] < rating[j]. greater is similar w/ rating[i] > rating[j]
-# then when we traverse through the solider list again, we can use greater and less to add together the number of combinations where the current soldier is the third soldier in the combination
+# then when we traverse through the soldier list again, we can use greater and less to add together the number of combinations where the current soldier is the third soldier in the combination
 # if rating[i] > rating[j] then we can have all combinations where there exists some k such that rating[k] < rating[j] < rating[i]. this is tracked in grater[j]
 # the opt table is opt[i] = # valid combinations ending with soldier i
 # sum the table for the final answer

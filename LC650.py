@@ -1,11 +1,14 @@
+import math
+
+
 class Solution:
-    def minSteps(self, n: int) -> int:
+    def minSteps(self, n: int):
         factors = []
         while n % 2 == 0:
             factors.append(2)
             n = n / 2
         # check odd numbers in the range of 3 to the sqrt of the number
-        for i in range(3, int(sqrt(n) + 1), 2):
+        for i in range(3, int(math.sqrt(n) + 1), 2):
             while n % i == 0:
                 factors.append(i)
                 n = n / i
@@ -20,3 +23,8 @@ class Solution:
         # sum of price factorization
 
         return int(sum(factors))
+
+
+if __name__ == "__main__":
+    x = Solution()
+    print(x.minSteps(120))

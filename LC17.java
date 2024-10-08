@@ -6,7 +6,7 @@ import java.util.List;
 
 public class LC17 {
     public List<String> letterCombinationsAttempt(String digits) {
-        // TKE am bad
+        // TLE am bad
         HashMap<Character, ArrayList<Character>> map = new HashMap<>();
         ArrayList<String> res = new ArrayList<>();
         map.put('2', new ArrayList<Character>(Arrays.asList('a', 'b', 'c')));
