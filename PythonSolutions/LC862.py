@@ -4,7 +4,6 @@ import heapq
 class Solution:
     def shortestSubarray(self, nums: List[int], k: int) -> int:
         current = 0
-        prefix = 0
         res = float("inf")
         h = []
         for i in range(len(nums)):
