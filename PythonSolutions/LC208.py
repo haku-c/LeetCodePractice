@@ -74,9 +74,7 @@ class Trie:
                 current = current.children[c]
             else:
                 return False
-        if current.wordEnd:
-            return True
-        return False
+        return current.wordEnd
 
     def startsWith(self, prefix: str) -> bool:
         current = self.root

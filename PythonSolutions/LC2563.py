@@ -56,7 +56,7 @@ def searchRight(lst, value):
             start = mid + 1
         else:
             end = mid - 1
-    return end
+    return start
 
 
 def searchLeft(lst, value):
