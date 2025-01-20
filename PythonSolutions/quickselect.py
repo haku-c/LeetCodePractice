@@ -23,10 +23,12 @@ def quickselect(nums, k, left, right):
 
 # if the problem is to find the kth largest number, pass nth_smallest.
 # this is because quickselect looks for the smallest kth integer by default
-# this quickselect is 0 based, so k = 0 returns the smallest integer
-# if you want k = 1 to be the smallest integer, increment k by 1
+
+
 def findk(arr, k):
     # nth_smallest = len(arr) - k
+    # this quickselect is 0 based, so k = 0 returns the smallest integer
+    # if you want k = 1 to be the smallest integer, pass k - 1
     return quickselect(arr, k, 0, len(arr) - 1)
 
 
