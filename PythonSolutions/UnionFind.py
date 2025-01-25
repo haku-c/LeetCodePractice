@@ -18,7 +18,7 @@ class UnionFind:
         leftSize = self.sizes[leftRep]
         rightSize = self.sizes[rightRep]
 
-        if leftSize > rightSize:
+        if leftSize >= rightSize:
             self.parents[rightRep] = leftRep
             self.sizes[leftRep] += self.sizes[rightRep]
         else:
