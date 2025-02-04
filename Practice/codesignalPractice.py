@@ -83,29 +83,41 @@ def solution2(pattern, source):
 
 # the question is essentially tetris, trying to complete a row using a block
 def solution3(field, figure):
-    # process figure to get left-bottom most point
-    def getCoords(figure):
-        res = {}
-        for row in range(2, -1, -1):
-            for col in range(3):
-                if figure[row][col]:
-                    res[row].append(col)
-        return res
 
-    coords = getCoords(figure)
     width = len(field[0])
     height = len(field)
-    maxCol = [-1] * width
-    for i in range(height):
-        for j in range(width):
-            if field[i][j] and maxCol[j] != -1:
-                maxCol[j] = i
 
-    for col in range(width):
-        connect = maxCol[col]
-        for i in range(2, -1, -1):
-            for j in coords[i]:
-                pass
+    def fits(row, col, fig, field):
+        for i in range(3):
+            for j in range(3):
+                if fig[row + i][col + j] == 1 and field[row + i][col + j] == 1:
+                    return False
+        return True
+
+    # iterate through every potential dropping point
+    for col in range(width - 2):
+        startHeight = 0
+        # if we havent hit the bottom of the grid or been blocked, keep going down
+        while startHeight < height - 2:
+            if fits(startHeight, col, figure, field):
+                startHeight += 1
+            else:
+                startHeight -= 1
+                break
+        # check if row is filled
+        for deltaRow in range(3):
+            isFilled = True
+            for checkCol in range(width):
+                # because we need to index into the figure itself, we want to index from 0 to 3 (hence deltaRow)
+                if not field[col + deltaRow][checkCol] == 1 or (
+                    # if the current col might be filled with the figure's value, check it
+                    col <= checkCol < col + 3
+                    and figure[deltaRow][checkCol - col] == 1
+                ):
+                    isFilled = False
+        if isFilled:
+            return col
+    return -1
 
 
 # this solution is a bit tricky, because you can double count the same number to form the desired sum

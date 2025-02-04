@@ -43,3 +43,28 @@ class Solution:
 
 
 # this solution is correct, but it is needlessly complicated and a headache to understand
+
+# faster and simpler solution below: (uses the same idea of sorting to find the appropriate groups)
+
+
+class Solution:
+    def lexicographicallySmallestArray(self, nums: List[int], limit: int) -> List[int]:
+        n = len(nums)
+        starts = {}
+        groups = [0] * n
+        sort_index = [i for i, x in sorted(enumerate(nums), key=lambda x: x[1])]
+        group = 0
+        starts[0] = 0
+        for i in range(1, n):
+            if abs(nums[sort_index[i - 1]] - nums[sort_index[i]]) > limit:
+                group += 1
+                starts[group] = i
+            groups[sort_index[i]] = group
+
+        res = [0] * n
+        for i in range(n):
+            rep = groups[i]
+            ind = starts[rep]
+            res[i] = nums[sort_index[ind]]
+            starts[rep] = ind + 1
+        return res
