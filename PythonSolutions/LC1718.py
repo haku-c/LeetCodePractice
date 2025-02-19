@@ -11,9 +11,8 @@ class Solution:
                 self.res = res
                 return True
 
-            start = 0
-            while start < len(res) and res[start] != -1:
-                start += 1
+            # find the first free index
+            start = res.index(-1)
 
             for i in range(n, 0, -1):
                 if free[i] == 0:
