@@ -13,3 +13,5 @@ class Solution:
 # Kadane's DP algo
 # basically find the min and the max possible subarray using the idea if it's better to start a new subarray completely
 # or continue adding to the best subarray previously discovered
+
+# note that it is faster to use if else over min max, but min max are more concise

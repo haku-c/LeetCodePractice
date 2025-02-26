@@ -38,6 +38,19 @@ def f3():
     return all(lst)
 
 
+def f4():
+    x = 2
+    y = 2
+    if y > x:
+        y
+
+
+def f5():
+    x = 2
+    y = 2
+    y = max(x, y)
+
+
 if __name__ == "__main__":
     print(
         timeit.timeit(
@@ -58,5 +71,19 @@ if __name__ == "__main__":
             "f3()",
             "from __main__ import f3",
             number=10,
+        )
+    )
+    print(
+        timeit.timeit(
+            "f4()",
+            "from __main__ import f4",
+            number=1000,
+        )
+    )
+    print(
+        timeit.timeit(
+            "f5()",
+            "from __main__ import f5",
+            number=1000,
         )
     )
