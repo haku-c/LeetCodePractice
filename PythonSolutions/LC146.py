@@ -5,13 +5,14 @@ class LinkedListNode:
         self.next = None
         self.prev = None
 
+
 class LRUCache:
 
     def __init__(self, capacity: int):
         self.capacity = capacity
         self.cache = {}
-        self.last = LinkedListNode(-1,-1)
-        self.first = LinkedListNode(-1,-1)
+        self.last = LinkedListNode(-1, -1)
+        self.first = LinkedListNode(-1, -1)
         self.last.prev = self.first
         self.first.next = self.last
 
@@ -38,8 +39,8 @@ class LRUCache:
             return -1
 
     def put(self, key: int, value: int) -> None:
-        # if we are only updating the value of an existing key, we need to move the current order of that 
-        # key in the linked list and 
+        # if we are only updating the value of an existing key, we need to move the current order of that
+        # key in the linked list and
         if key in self.cache:
             temp = self.cache[key]
             self.delete(temp)
@@ -56,6 +57,7 @@ class LRUCache:
             temp = LinkedListNode(key, value)
         self.add(temp)
         self.cache[key] = self.first.next
+
 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
