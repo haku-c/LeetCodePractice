@@ -1,4 +1,5 @@
 class Node {
+    // make all fields public to avoid having to use getters and setters 
     public int value;
     public int key;
     public Node next;
@@ -51,6 +52,7 @@ class LRUCache {
     }
     
     public void put(int key, int value) {
+        // local scope does not persist current outside the if-else unless you declare it outside
         Node current;
         if (this.cache.containsKey(key)){
             current = this.cache.get(key);
